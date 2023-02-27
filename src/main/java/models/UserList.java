@@ -8,7 +8,9 @@ public class UserList {
 	
 	private ArrayList<User> listOfUsers = new ArrayList<>();
 	
-	private UserList() {};
+	private UserList() {
+		this.listOfUsers.add(new User("admin", "admin"));
+	};
 	
 	public static UserList getInstanceUserList() {
 		if(instanceUserList == null) instanceUserList = new UserList();

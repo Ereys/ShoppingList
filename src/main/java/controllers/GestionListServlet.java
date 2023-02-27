@@ -15,7 +15,7 @@ import java.io.IOException;
  */
 
 
-@WebServlet(name="Home", urlPatterns = {"/Home"})
+@WebServlet(name="Home", urlPatterns = {"/Home", "/List"})
 public class GestionListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

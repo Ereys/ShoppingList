@@ -8,7 +8,7 @@
     <h1>Shopping List : </h1>
     <ul>
         <c:forEach var="list" items="${shoppingList}">
-            <li> <c:out value="${list.getName()}"> </c:out> </li>
+            <li> <a href="/ShoppingList/List/${list.getName()}"> <c:out value="${list.getName()}"> </c:out> </a> </li>
         </c:forEach>
     </ul>
     

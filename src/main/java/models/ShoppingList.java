@@ -12,8 +12,8 @@ public class ShoppingList {
 		this.list = new <Article, Integer>HashMap();
 	}
 	
-	public void addArticle(Article newArticle, int quantity) {
-		this.list.put(newArticle, quantity);
+	public void addArticle(String name, int quantity) {
+		this.list.put(new Article(name), quantity);
 	}
 	
 	public void delArticle(String articleName) {
@@ -37,6 +37,9 @@ public class ShoppingList {
 
 	public String getName() {
 		return name;
-	}	
-	
+	}
+
+	public HashMap<Article, Integer> getList() {
+		return list;
+	}
 }

@@ -16,4 +16,14 @@
     <servlet-name>CreateListServlet</servlet-name>
     <url-pattern>/CreateListServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShoppingListServlet</display-name>
+    <servlet-name>ShoppingListServlet</servlet-name>
+    <servlet-class>controllers.ShoppingListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShoppingListServlet</servlet-name>
+    <url-pattern>/ShoppingListServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
