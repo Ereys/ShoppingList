@@ -2,11 +2,18 @@ package models;
 
 import java.util.ArrayList;
 
+
+
+/**
+ * This class represent the user of the application
+ * @author Awat
+ *
+ */
 public class User {
 
 	private String username;
 	private String password;
-	private ShoppingListManager listManager;
+	private UserShoppingLists listManager;
 
 
 	private boolean active;
@@ -14,7 +21,7 @@ public class User {
 	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
-		this.listManager = new ShoppingListManager();
+		this.listManager = new UserShoppingLists();
 	}
 
 	String getUsername() {
@@ -25,6 +32,11 @@ public class User {
 		return password;
 	}
 
+	/**
+	 * CHeck if the password of the user is right
+	 * @param passwordToTest
+	 * @return true or false
+	 */
 	public boolean checkPassword(String passwordToTest) {
 		return this.password.equals(passwordToTest);
 	}
@@ -33,7 +45,7 @@ public class User {
 		this.active = false;
 	}
 
-	public ShoppingListManager getListManager() {
+	public UserShoppingLists getListManager() {
 		return listManager;
 	}
 }

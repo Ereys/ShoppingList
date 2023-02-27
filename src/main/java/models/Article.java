@@ -1,5 +1,10 @@
 package models;
 
+/**
+ * Class which represent an article
+ * @author pierre
+ *
+ */
 public class Article {
 	
 	private String name;
