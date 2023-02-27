@@ -7,8 +7,8 @@
 <body>
     <h1>Listes de courses</h1>
     <ul>
-        <c:forEach var="listeCourses" items="${utilisateur.listesCourses}">
-            <li><a href="AfficherListeServlet?nomListe=${listeCourses.nom}">${listeCourses.nom}</a></li>
+        <c:forEach var="list" items="${shoppingList}">
+            <li> <c:out value="${list.getName()}"> </c:out> </li>
         </c:forEach>
     </ul>
 </body>

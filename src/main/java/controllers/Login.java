@@ -11,21 +11,30 @@ import models.UserList;
 
 import java.io.IOException;
 
-@WebServlet(name="Accueil", urlPatterns = {"/login"})
+@WebServlet(name="Accueil", urlPatterns = {"/", "/Login"})
 public class Login extends HttpServlet {
+	
+	
+	
+    @Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		this.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+	}
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-
-        User user = UserList.getInstanceUserList().authentification(username, password);
-        if (user == null) {
-            request.setAttribute("erreur", "Utilisateur / mot de passe incorrect");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        } else {
+        
+        try {
+        	User user = UserList.getInstanceUserList().authentification(username, password);
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            response.sendRedirect("list.jsp");
+            response.sendRedirect(request.getContextPath() + "/Home");
+        }catch(Exception e) {
+            	System.out.println("inconnu au bataillon");
+                request.setAttribute("erreur", "Utilisateur / mot de passe incorrect");
+                request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
         }
     }
 }

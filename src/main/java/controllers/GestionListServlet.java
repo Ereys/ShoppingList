@@ -15,7 +15,7 @@ import java.io.IOException;
  */
 
 
-@WebServlet(name="Home", urlPatterns = {"/home"})
+@WebServlet(name="Home", urlPatterns = {"/Home"})
 public class GestionListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -23,8 +23,16 @@ public class GestionListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		this.getServletContext().getRequestDispatcher("WEB-INF/home.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        
+        if(user != null) {
+	        user.getListManager().addShoppingList("j'espere que ca marche");
+			request.getSession().setAttribute("shoppingList", user.getListManager().getShoppingLists());
+			this.getServletContext().getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
+        }else {
+            response.sendRedirect(request.getContextPath() + "/Login");
+        }
 	}
 
 	/**
