@@ -12,7 +12,7 @@ import models.UserList;
 import java.io.IOException;
 
 @WebServlet(name="Accueil", urlPatterns = {"/", "/Login"})
-public class Login extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 	
 	
 	
@@ -32,7 +32,6 @@ public class Login extends HttpServlet {
             session.setAttribute("user", user);
             response.sendRedirect(request.getContextPath() + "/Home");
         }catch(Exception e) {
-            	System.out.println("inconnu au bataillon");
                 request.setAttribute("erreur", "Utilisateur / mot de passe incorrect");
                 request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
         }

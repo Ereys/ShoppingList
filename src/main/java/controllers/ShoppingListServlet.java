@@ -23,14 +23,15 @@ public class ShoppingListServlet extends HttpServlet {
         	try {
 	            String[] url = request.getPathInfo().split("/");
 	            String name = url[url.length-1];
+	            
 	            request.setAttribute("shoppingList", user.getListManager().getShoppingListByName(name)); 
         	}catch(Exception e) {
-        		request.setAttribute("error", e.getMessage());
+        		request.setAttribute("error", e.getMessage()); // display the error message
+        		
         	}finally {   
 			this.getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp").forward(request, response);
         	}
-        	
-        }else {
+        }else { // not connected
             response.sendRedirect(request.getContextPath() + "/Login");
         }
 	}

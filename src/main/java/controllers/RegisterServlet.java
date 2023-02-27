@@ -15,7 +15,7 @@ import java.io.IOException;
  * Servlet implementation class Register
  */
 @WebServlet(name="Register", urlPatterns = {"/Register"})
-public class Register extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 	
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -26,12 +26,13 @@ public class CreateListServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String name = request.getParameter("name");
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         
         if(user != null) {
-        	user.getListManager().addShoppingList(name);
+        	user.getListManager().addShoppingList(name); // Add to the user list
             response.sendRedirect(request.getContextPath() + "/Home");
         }else {
             response.sendRedirect(request.getContextPath() + "/Login");

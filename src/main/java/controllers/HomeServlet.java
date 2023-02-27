@@ -16,12 +16,9 @@ import java.io.IOException;
 
 
 @WebServlet(name="Home", urlPatterns = {"/Home", "/List"})
-public class GestionListServlet extends HttpServlet {
+public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
@@ -34,9 +31,7 @@ public class GestionListServlet extends HttpServlet {
         }
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         
@@ -47,21 +42,6 @@ public class GestionListServlet extends HttpServlet {
         	user.getListManager().addShoppingList(name);
         }else {
             response.sendRedirect(request.getContextPath() + "/Login");
-        }
-	}
-
-	@Override
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name = request.getParameter("name");
-        
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        
-        if(user != null) {
-        	user.getListManager().deleteShoppingList(name);
-        	
-        }else {
-        	response.sendRedirect("login.jsp");
         }
 	}
 }
