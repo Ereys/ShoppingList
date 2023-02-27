@@ -46,7 +46,7 @@ public class GestionListServlet extends HttpServlet {
         if(user != null) {
         	user.getListManager().addShoppingList(name);
         }else {
-        	response.sendRedirect("login.jsp");
+            response.sendRedirect(request.getContextPath() + "/Login");
         }
 	}
 
@@ -59,6 +59,7 @@ public class GestionListServlet extends HttpServlet {
         
         if(user != null) {
         	user.getListManager().deleteShoppingList(name);
+        	
         }else {
         	response.sendRedirect("login.jsp");
         }

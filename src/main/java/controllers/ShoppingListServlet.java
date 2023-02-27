@@ -36,7 +36,19 @@ public class ShoppingListServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        
+        String articleName = request.getParameter("articleName");
+        int qtt = Integer.parseInt(request.getParameter("qtt"));
+        
+        if(user != null) {
+            String[] url = request.getPathInfo().split("/");
+            String name = url[url.length-1];
+            user.getListManager().getShoppingListByName(name).addArticle(articleName, qtt);
+            this.doGet(request, response);
+        }else {
+            response.sendRedirect(request.getContextPath() + "/Login");
+        }
 	}
-
 }
