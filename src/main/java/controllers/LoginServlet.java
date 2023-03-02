@@ -11,7 +11,7 @@ import models.UserList;
 
 import java.io.IOException;
 
-@WebServlet(name="Accueil", urlPatterns = {"/", "/Login"})
+@WebServlet(name="Accueil", urlPatterns = {"/Login"})
 public class LoginServlet extends HttpServlet {
 	
 	
