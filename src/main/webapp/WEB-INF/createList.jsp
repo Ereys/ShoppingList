@@ -12,6 +12,7 @@
         <label for="nomListe">Nom de la liste :</label>
         <input type="text" id="nomListe" name="name"><br><br>
         <input type="submit" value="Créer">
+        
     </div>
     </form>
     </div>

@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
    <title> <c:if test="${error == null}"> ${shoppingList.getName()} </c:if> </title>
+   <link href="../css/shoppingList.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div class="container">
