@@ -5,11 +5,16 @@
     <title>Création d'une liste de courses</title>
 </head>
 <body>
+<div class="container">
     <h1>Création d'une liste de courses</h1>
-    <form action="CreateListServlet" method="post">
+    <form action="CreateList" method="post">
+    <div class="form-group">
         <label for="nomListe">Nom de la liste :</label>
         <input type="text" id="nomListe" name="name"><br><br>
         <input type="submit" value="Créer">
+        
+    </div>
     </form>
+    </div>
 </body>
 </html>
