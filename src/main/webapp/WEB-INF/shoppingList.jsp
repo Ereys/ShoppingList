@@ -12,7 +12,11 @@
     <c:if test="${error == null}">
 	    <ul class="list">
 	        <c:forEach var="article" items="${shoppingList.getList()}">
-	            <li>${article.key.getName()} - ${article.value}</li>
+	            <li>
+                    ${article.key.getName()} - ${article.value}
+                    <button onclick="editArticle('${article.key.getName()}')">Modifier</button>
+                    <button onclick="deleteArticle('${article.key.getName()}')">Supprimer</button>
+                </li>
 	        </c:forEach> 
 	    </ul>
 	    
@@ -36,5 +40,6 @@
     </div>
     
 </div>
+
 </body>
 </html>
