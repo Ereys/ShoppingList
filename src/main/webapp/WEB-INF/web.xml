@@ -25,4 +25,44 @@
     <servlet-name>DisconnectServlet</servlet-name>
     <url-pattern>/DisconnectServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditListServlet</display-name>
+    <servlet-name>EditListServlet</servlet-name>
+    <servlet-class>controllers.EditListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditListServlet</servlet-name>
+    <url-pattern>/EditListServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteListServlet</display-name>
+    <servlet-name>DeleteListServlet</servlet-name>
+    <servlet-class>controllers.DeleteListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteListServlet</servlet-name>
+    <url-pattern>/DeleteListServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditArticleServlet</display-name>
+    <servlet-name>EditArticleServlet</servlet-name>
+    <servlet-class>controllers.EditArticleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditArticleServlet</servlet-name>
+    <url-pattern>/EditArticleServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteArticleServlet</display-name>
+    <servlet-name>DeleteArticleServlet</servlet-name>
+    <servlet-class>controllers.DeleteArticleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteArticleServlet</servlet-name>
+    <url-pattern>/DeleteArticleServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

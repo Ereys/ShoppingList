@@ -12,7 +12,11 @@
     <c:if test="${error == null}">
 	    <ul class="list">
 	        <c:forEach var="article" items="${shoppingList.getList()}">
-	            <li>${article.key.getName()} - ${article.value}</li>
+	            <li>
+                    ${article.key.getName()} - ${article.value}
+                    <button onclick="editArticle('${article.key.getName()}')">Modifier</button>
+                    <button onclick="deleteArticle('${article.key.getName()}')">Supprimer</button>
+                </li>
 	        </c:forEach> 
 	    </ul>
 	    
@@ -22,7 +26,7 @@
 			 <input type="text" placeholder="Entrer le nom de l'article" name="articleName" required class="input">
 			 
 			 <label class="label"><b>Quantité : </b></label>
-			 <input type="text" placeholder="Entrer la quantité" name="qtt" required class="input">
+			 <input type="text" placeholder="Entrer la quantité" name="qtt" required class="input" pattern="[0-9]+">
 			 <input type="submit" id='submit' value='addArticle' class="button">
 		</form>
 	 </c:if>
@@ -36,5 +40,6 @@
     </div>
     
 </div>
+
 </body>
 </html>
