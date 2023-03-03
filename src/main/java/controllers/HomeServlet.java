@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import models.User;
+import webservices.Wrapper;
 
 import java.io.IOException;
 
@@ -22,6 +23,8 @@ public class HomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
+        
+        new Wrapper();
         
         if(user != null) {
 			request.getSession().setAttribute("shoppingList", user.getListManager().getShoppingLists());

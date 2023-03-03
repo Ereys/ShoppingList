@@ -13,15 +13,12 @@ public class User {
 
 	private String username;
 	private String password;
-	private UserShoppingLists listManager;
-
 
 	private boolean active;
 
 	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
-		this.listManager = new UserShoppingLists();
 	}
 
 	String getUsername() {
@@ -43,9 +40,5 @@ public class User {
 
 	public void desactivateAccount() {
 		this.active = false;
-	}
-
-	public UserShoppingLists getListManager() {
-		return listManager;
 	}
 }

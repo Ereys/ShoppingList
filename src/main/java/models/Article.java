@@ -8,9 +8,11 @@ package models;
 public class Article {
 	
 	private String name;
+	private int quantity;
 	
-	public Article(String name) {
+	public Article(String name, int quantity){
 		this.name = name;
+		this.quantity = quantity;
 	}
 	
 	
@@ -20,4 +22,16 @@ public class Article {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+	
 }
