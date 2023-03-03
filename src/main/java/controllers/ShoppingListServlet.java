@@ -27,7 +27,6 @@ public class ShoppingListServlet extends HttpServlet {
 	            request.setAttribute("shoppingList", user.getListManager().getShoppingListByName(name)); 
         	}catch(Exception e) {
         		request.setAttribute("error", e.getMessage()); // display the error message
-        		
         	}finally {   
 			this.getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp").forward(request, response);
         	}
