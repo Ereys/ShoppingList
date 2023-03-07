@@ -2,9 +2,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="css/shoppingList.css" rel="stylesheet" type="text/css">
 <title>Login</title>
+
 </head>
 <body>
+	
 	<div class="container">
 		<form action="Login" method="POST">
 			<h1>Connexion</h1>
