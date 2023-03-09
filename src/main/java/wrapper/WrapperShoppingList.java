@@ -4,6 +4,8 @@ import java.util.List;
 
 import models.ShoppingList;
 import models.User;
+import webservices.BaseUrl;
+import webservices.WebServiceManager;
 
 /**
  * Class to convert json to Java object
@@ -11,6 +13,8 @@ import models.User;
  *
  */
 public class WrapperShoppingList implements DaoInterface<ShoppingList>{
+	
+	
 
 	@Override
 	public List<ShoppingList> getAll() {

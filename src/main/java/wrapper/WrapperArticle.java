@@ -4,7 +4,7 @@ import java.util.List;
 
 import models.Article;
 
-public class ArticleWrapper implements DaoInterface<Article> {
+public class WrapperArticle implements DaoInterface<Article> {
 
 	@Override
 	public List<Article> getAll() {

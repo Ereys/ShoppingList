@@ -21,9 +21,8 @@ public class WebServiceManager {
 		return wsc;
 	}
 	
-	private void connect() {
+	public void connect() {
 		try {
-			this.baseUrl = new URL(BaseUrl.BASE_URL_GATEWAY);
 			this.con = (HttpURLConnection) this.baseUrl.openConnection();
 		}catch(Exception ioe) {
 			System.out.println(ioe);
@@ -34,40 +33,12 @@ public class WebServiceManager {
 		this.con.disconnect();
 	}
 	
-	public String get() {
-		try {
-			this.connect();
-			this.con.setRequestMethod("GET");
-			con.setRequestProperty("Content-Type", "application/json");
-			return readResponse();
-		}catch(Exception ioe) {
-			System.out.println(ioe);
-			return null;
-		}
+
+	public HttpURLConnection getConnection() {
+		return con;
 	}
-	
-	public String post(){
-		return "null";
-	}
-	
-	public String readResponse() {
-		try {
-			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-			String inputLine;
-			StringBuffer content = new StringBuffer();
-			while ((inputLine = in.readLine()) != null) {
-			    content.append(inputLine);
-			}
-			in.close();
-			this.disconnect();
-			
-			return content.toString();
-		}catch(Exception ioe) {
-			System.out.println(ioe);
-			return null;
-		}
-	}
-	
+
+
 	public void setUrl(String newUrl) {
 		try {
 			this.baseUrl = new URL(newUrl);

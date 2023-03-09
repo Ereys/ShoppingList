@@ -1,44 +1,87 @@
 package models;
+import java.time.*;
 
-import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-
-/**
- * This class represent the user of the application
- * @author Awat
- *
- */
 public class User {
-
+	
+	@JsonProperty("id")
+	private long idClient;
+	@JsonProperty("username")
 	private String username;
+	@JsonProperty("email")
+	private String email;
+	@JsonProperty("password")
 	private String password;
-
-	private boolean active;
-
-	public User(String username, String password) {
+	@JsonProperty("registerDate")
+	private String registerDate;
+	
+	
+	public User() {
+		super();
+	};
+	
+	
+	public User(String username, String email, String password) {
+		super();
 		this.username = username;
+		this.email = email;
 		this.password = password;
 	}
 
-	String getUsername() {
+	public User(String username, String email, String password, String registerDate) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.registerDate = registerDate;
+	}
+
+	public User(long idClient, String username, String email, String password, String registerDate) {
+		super();
+		this.idClient = idClient;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.registerDate = registerDate;
+	}
+	
+	public long getIdClient() {
+		return idClient;
+	}
+	public void setIdClient(long idClient) {
+		this.idClient = idClient;
+	}
+	public String getUsername() {
 		return username;
 	}
-
-	String getPassword() {
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
 		return password;
 	}
-
-	/**
-	 * CHeck if the password of the user is right
-	 * @param passwordToTest
-	 * @return true or false
-	 */
-	public boolean checkPassword(String passwordToTest) {
-		return this.password.equals(passwordToTest);
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getRegisterDate() {
+		return registerDate;
+	}
+	public void setRegisterDate(String registerDate) {
+		this.registerDate = registerDate;
 	}
 
-	public void desactivateAccount() {
-		this.active = false;
+	@Override
+	public String toString() {
+		return "User [idClient=" + idClient + ", username=" + username + ", email=" + email + ", password=" + password
+				+ ", registerDate=" + registerDate + "]";
 	}
 }
+
