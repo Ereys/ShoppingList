@@ -33,9 +33,9 @@ public class WrapperShoppingList implements IWrapperShoppingList{
 	
 
 	@Override
-	public List<ShoppingList> findShoppingListsByUsername(String id) {
+	public List<ShoppingList> findShoppingListsByIdAuthor(Long id) {
 		try {
-		String response = rqst.get(BaseUrl.BASE_URL_SHOPPINGLIST + "shoppingLists/");
+		String response = rqst.get(BaseUrl.BASE_URL_SHOPPINGLIST + "/search/byUsername?name=" + id);
 		System.out.println("response : " + response);
 		if(response == null) {
 			throw new IllegalArgumentException();
@@ -50,20 +50,37 @@ public class WrapperShoppingList implements IWrapperShoppingList{
 
 	@Override
 	public ShoppingList get(Long id) {
-		WebServiceManager.getInstance().setUrl(BaseUrl.BASE_URL_USERS + "shoppingsLists/" + id);
-		String response = WebServiceManager.getInstance().get();
-		return null;
+		try {
+			String response = rqst.get(BaseUrl.BASE_URL_SHOPPINGLIST + Long.toString(id));
+			if(response == null) {
+				throw new IllegalArgumentException();
+			}
+			return objMapper.readValue(response, ShoppingList.class);
+		}catch(Exception e) {
+				System.err.println(e);
+				return null;
+			}
 	}
 
 	@Override
-	public void update(Long id, ShoppingList objectUpdated) {
+	public ShoppingList update(Long id, ShoppingList objectUpdated) {
+		return objectUpdated;
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void create(ShoppingList newObject) {
-		// TODO Auto-generated method stub
+	public ShoppingList create(ShoppingList newObject) {
+		try {			
+			String response = rqst.post(BaseUrl.BASE_URL_SHOPPINGLIST, objMapper.writeValueAsString(newObject));
+			if(response == null) {
+				throw new IllegalArgumentException();
+			}
+			return objMapper.readValue(response, ShoppingList.class);
+		}catch(Exception e) {
+				System.err.println(e);
+				return null;
+		}
 		
 	}
 
@@ -72,6 +89,4 @@ public class WrapperShoppingList implements IWrapperShoppingList{
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
 }

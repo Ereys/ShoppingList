@@ -7,7 +7,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import models.User;
-import models.UserList;
+import wrapper.DaoInterface;
+import wrapper.IWrapperUser;
+import wrapper.WrapperUser;
 
 import java.io.IOException;
 
@@ -27,10 +29,17 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         
         try {
-        	User user = UserList.getInstanceUserList().authentification(username, password);
+        	IWrapperUser userWrapper = new WrapperUser();
             HttpSession session = request.getSession();
-            session.setAttribute("user", user);
-            response.sendRedirect(request.getContextPath() + "/Home");
+            
+            User user = userWrapper.logInIfPasswordAndUsernameCorrect(username, password);
+            if(user != null) {
+                session.setAttribute("user", user);
+                response.sendRedirect(request.getContextPath() + "/Home");
+            }else {
+                request.setAttribute("erreur", "Utilisateur / mot de passe incorrect");
+                request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+            }
         }catch(Exception e) {
                 request.setAttribute("erreur", "Utilisateur / mot de passe incorrect");
                 request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);

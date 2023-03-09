@@ -26,7 +26,7 @@ public class WrapperArticle implements IWrapperArticle {
 	public List<Article> getAll() {
 		
 		try {
-		String response = rqst.get(BaseUrl.BASE_URL_USERS + "users/");
+		String response = rqst.get(BaseUrl.BASE_URL_SHOPPINGLIST);
 		System.out.println("response : " + response);
 		if(response == null) {
 			throw new IllegalArgumentException();

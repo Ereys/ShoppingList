@@ -6,7 +6,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import models.ShoppingList;
 import models.User;
+import wrapper.IWrapperShoppingList;
+import wrapper.WrapperShoppingList;
 
 import java.io.IOException;
 
@@ -32,7 +35,8 @@ public class CreateListServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
         
         if(user != null) {
-        	user.getListManager().addShoppingList(name); // Add to the user list
+        	IWrapperShoppingList wrap = new WrapperShoppingList();
+        	wrap.create(new ShoppingList(name));
             response.sendRedirect(request.getContextPath() + "/Home");
         }else {
             response.sendRedirect(request.getContextPath() + "/Login");

@@ -7,6 +7,6 @@ import models.User;
 
 public interface IWrapperShoppingList extends DaoInterface<ShoppingList, Long>{	
 	
-	public List<ShoppingList> findShoppingListsByUsername(String id);
+	public List<ShoppingList> findShoppingListsByIdAuthor(Long id);
 	
 }

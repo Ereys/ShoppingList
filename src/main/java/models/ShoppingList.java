@@ -14,6 +14,7 @@ public class ShoppingList {
 	
 	private List<Article> list;
 	private String name;
+	private Long idAuthor;
 	
 	public ShoppingList(String _name) {
 		this.name = _name;
