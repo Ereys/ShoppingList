@@ -1,5 +1,7 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Class which represent an article
  * @author pierre
@@ -7,7 +9,9 @@ package models;
  */
 public class Article {
 	
+	@JsonProperty("name")
 	private String name;
+	@JsonProperty("quantity")
 	private int quantity;
 	
 	public Article(String name, int quantity){
@@ -32,6 +36,4 @@ public class Article {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
-	
 }

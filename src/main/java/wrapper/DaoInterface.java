@@ -1,6 +1,8 @@
-package webservices;
+package wrapper;
 
 import java.util.List;
+
+import models.ShoppingList;
 
 /**
  * CRUD method
@@ -9,7 +11,7 @@ import java.util.List;
  * @param <T>
  */
 
-public interface DaoInterface<T> {
+public interface DaoInterface<T, ID> {
 
 	
 	/**
@@ -17,24 +19,24 @@ public interface DaoInterface<T> {
 	 */
 	
 	List<T> getAll();
-	T get(long id);
+	T get(ID id);
 	
 	/**
 	 * Update
 	 */
 	
-	void update(long id, T objectUpdated);
+	T update(ID id, T objectUpdated);
 	
 	/**
 	 * Create
 	 */
 	
-	void create(T newObject);
+	T create(T newObject);
 	
 	/**
 	 * Delete
 	 */
 
-	void delete(long id);
+	void delete(ID id);
 	
 }

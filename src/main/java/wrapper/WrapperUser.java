@@ -11,10 +11,9 @@ import webservices.BaseUrl;
 import webservices.RequestHandler;
 import webservices.WebServiceManager;
 
-public class WrapperUser implements DaoInterface<User> {
+public class WrapperUser implements IWrapperUser{
 	
 	private ObjectMapper objMapper;
-	private User user;
 	private RequestHandler rqst;
 	
 	public WrapperUser() {
@@ -40,7 +39,7 @@ public class WrapperUser implements DaoInterface<User> {
 	}
 
 	@Override
-	public User get(long id) {
+	public User get(Long id) {
 		try {
 			String response = rqst.get(BaseUrl.BASE_URL_USERS + "users/" + Long.toString(id));
 			if(response == null) {
@@ -54,26 +53,27 @@ public class WrapperUser implements DaoInterface<User> {
 	}
 
 	@Override
-	public void update(long id, User objectUpdated) {
-		// TODO Auto-generated method stub
+	public User update(Long id, User objectUpdated) {
+		return null;
 		
 	}
 
 	@Override
-	public void create(User newObject) {
+	public User create(User newObject) {
 		try {			
 			String response = rqst.post(BaseUrl.BASE_URL_USERS + "users/", objMapper.writeValueAsString(newObject));
 			if(response == null) {
 				throw new IllegalArgumentException();
 			}
-			System.out.println(response);
+			return objMapper.readValue(response, User.class);
 		}catch(Exception e) {
 				System.err.println(e);
+				return null;
 		}
 	}
 
 	@Override
-	public void delete(long id) {
+	public void delete(Long id) {
 		// TODO Auto-generated method stub
 		
 	}
