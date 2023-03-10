@@ -20,4 +20,10 @@ public class ShoppingList {
 		this.name = _name;
 		this.list = new ArrayList<Article>();
 	}
+
+	public List<Article> getListArticle() {
+		return list;
+	}
+	
+	
 }

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import models.Article;
+import models.ShoppingList;
 import models.User;
 import webservices.BaseUrl;
 import webservices.RequestHandler;
@@ -23,30 +24,32 @@ public class WrapperArticle implements IWrapperArticle {
 	
 
 	@Override
-	public List<Article> getAll() {
+	public List<Article> findAllById(String id) {
 		
 		try {
-		String response = rqst.get(BaseUrl.BASE_URL_SHOPPINGLIST);
+		String response = rqst.get(BaseUrl.BASE_URL_SHOPPINGLIST + String.toString(id));
 		System.out.println("response : " + response);
 		if(response == null) {
 			throw new IllegalArgumentException();
 		}
-		List<Article> articleList = objMapper.readValue(response, new TypeReference<List<Article>>() {});
-		return articleList;
+		ShoppingList articleList = objMapper.readValue(response, ShoppingList.class);
+		return articleList.getListArticle();
 		}catch(Exception e) {
 			System.err.println(e);
 			return null;
 		}
 	}
+	
+	
 
 	@Override
-	public Article get(Long id) {
+	public Article find(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Article update(Long id, Article objectUpdated) {
+	public Article update(String id, Article objectUpdated) {
 		return objectUpdated;
 		// TODO Auto-generated method stub
 	}
@@ -59,7 +62,7 @@ public class WrapperArticle implements IWrapperArticle {
 	}
 
 	@Override
-	public void delete(Long id) {
+	public void delete(String id) {
 		// TODO Auto-generated method stub
 		
 	}

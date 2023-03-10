@@ -21,27 +21,10 @@ public class WrapperUser implements IWrapperUser{
 		this.rqst = new RequestHandler();
 	}
 	
-	
 	@Override
-	public List<User> getAll() {
+	public User find(String id) {
 		try {
-		String response = rqst.get(BaseUrl.BASE_URL_USERS);
-		System.out.println("response : " + response);
-		if(response == null) {
-			throw new IllegalArgumentException();
-		}
-		List<User> userList = objMapper.readValue(response, new TypeReference<List<User>>() {});
-		return userList;
-		}catch(Exception e) {
-			System.err.println(e);
-			return null;
-		}
-	}
-
-	@Override
-	public User get(Long id) {
-		try {
-			String response = rqst.get(BaseUrl.BASE_URL_USERS + Long.toString(id));
+			String response = rqst.get(BaseUrl.BASE_URL_USERS + id);
 			if(response == null) {
 				throw new IllegalArgumentException();
 			}
@@ -52,8 +35,6 @@ public class WrapperUser implements IWrapperUser{
 			}
 	}
 	
-	
-
 	@Override
 	public User logInIfPasswordAndUsernameCorrect(String username, String pwd) {
 		// TODO Auto-generated method stub
@@ -62,7 +43,7 @@ public class WrapperUser implements IWrapperUser{
 
 
 	@Override
-	public User update(Long id, User objectUpdated) {
+	public User update(String id, User objectUpdated) {
 		return null;
 		
 	}
@@ -79,11 +60,5 @@ public class WrapperUser implements IWrapperUser{
 				System.err.println(e);
 				return null;
 		}
-	}
-
-	@Override
-	public void delete(Long id) {
-		// TODO Auto-generated method stub
-		
 	}
 }

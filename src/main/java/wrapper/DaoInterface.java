@@ -16,10 +16,11 @@ public interface DaoInterface<T, ID> {
 	
 	/**
 	 * Read 
+	 * @param id TODO
 	 */
 	
-	List<T> getAll();
-	T get(ID id);
+	List<T> findAllById(ID id);
+	T find(ID id);
 	
 	/**
 	 * Update

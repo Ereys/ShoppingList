@@ -26,30 +26,25 @@ public class WrapperShoppingList implements IWrapperShoppingList{
 		this.rqst = new RequestHandler();
 	}
 	
-	@Override
-	public List<ShoppingList> getAll() {
-		return null;
-	}
-	
 
-	@Override
-	public List<ShoppingList> findShoppingListsByIdAuthor(Long id) {
+	public List<ShoppingList> findAllByUsername(String id) {
 		try {
-		String response = rqst.get(BaseUrl.BASE_URL_SHOPPINGLIST + "/search/byUsername?name=" + id);
-		System.out.println("response : " + response);
-		if(response == null) {
-			throw new IllegalArgumentException();
-		}
-		List<ShoppingList> allShoppingList = objMapper.readValue(response, new TypeReference<List<ShoppingList>>() {});
-		return allShoppingList;
+			String response = rqst.get(BaseUrl.BASE_URL_SHOPPINGLIST + "/search/byUsername?name=" + id);
+			System.out.println("response : " + response);
+			if(response == null) {
+				throw new IllegalArgumentException();
+			}
+			List<ShoppingList> allShoppingList = objMapper.readValue(response, new TypeReference<List<ShoppingList>>() {});
+			return allShoppingList;
 		}catch(Exception e) {
 			System.err.println(e);
 			return null;
 		}
 	}
+	
 
 	@Override
-	public ShoppingList get(Long id) {
+	public ShoppingList find(Long id) {
 		try {
 			String response = rqst.get(BaseUrl.BASE_URL_SHOPPINGLIST + Long.toString(id));
 			if(response == null) {
